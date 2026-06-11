@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful | Computer Vision For Beginners</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Thank you for registering for the Computer Vision for Beginners Webinar. Your payment is being verified, and details will be sent soon.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* Dedicated styles for thank-you success card transitions */
+        .thank-you-section {
+            padding: 150px 0 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(120% 120% at 50% 10%, var(--bg-main) 40%, rgba(34, 197, 94, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* SVG Circle Success Checkmark Draw Animation */
+        .success-checkmark-wrapper {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px auto;
+        }
+
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 4;
+            stroke-miterlimit: 10;
+            stroke: var(--success);
+            fill: none;
+            animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke-width: 5;
+            stroke: var(--success);
+            fill: none;
+            stroke-linecap: round;
+            animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes strokeCircle {
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes strokeCheck {
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .success-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .success-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .info-bullets-list {
+            text-align: left;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-bottom: 35px;
+        }
+
+        .info-bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .info-bullet-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-bullet-item i {
+            color: var(--success);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .thank-you-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Confetti canvas */
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 480px) {
+            .success-card {
+                padding: 30px 20px;
+            }
+            .thank-you-actions {
+                flex-direction: column;
+            }
+            .thank-you-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <!-- Dynamic Theme Initializer script (prevents theme flashing) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 
+                               (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- PRE-LOADER -->
+    <div id="loader-screen" class="loader-screen">
+        <div class="loader-spinner"></div>
+        <h4 style="font-weight: 600; color: var(--primary);">Loading Success Details</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Configuring Confirmation Systems...</p>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="images/logo.jpeg" alt="TAITS TECH Logo" style="height: 40px; border-radius: 4px;">
+                TAITS <span>TECH</span>
+            </a>
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- THANK YOU MAIN DISPLAY -->
+    <section class="thank-you-section">
+        <!-- Confetti explosion canvas -->
+        <canvas id="confetti-canvas"></canvas>
+        
+        <div class="container">
+            <div class="success-card glass-card">
+                
+                <!-- Success Animated Checkmark icon -->
+                <div class="success-checkmark-wrapper">
+                    <svg viewBox="0 0 52 52" style="width: 100%; height: 100%;">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none"/>
+                    </svg>
+                </div>
+
+                <h1 class="success-title">Registration Successful!</h1>
+                <p class="success-desc">Thank you for registering for the <strong>Computer Vision for Beginners Webinar</strong>. We have securely received your registration details and payment transaction records.</p>
+                
+                <!-- Next Steps Info Card -->
+                <div class="info-bullets-list">
+                    <div class="info-bullet-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Payment Verification:</strong> Our administrative team will verify your UPI Transaction ID and Screenshot within 1-2 hours.
+                        </div>
+                    </div>
+                    <div class="info-bullet-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>WhatsApp & Email Details:</strong> Upon successful verification, the live webinar joining links and schedule details will be sent directly to your registered Mobile / WhatsApp number and Email.
+                        </div>
+                    </div>
+                    <div class="info-bullet-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>VIP Rewards:</strong> Your Project Source Code and OpenCV handouts folder access link will be unlocked inside the webinar training session.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action redirects -->
+                <div class="thank-you-actions">
+                    <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Back to Home</a>
+                    <a href="https://wa.me/7695835780?text=Hi%2C%20I%20have%20completed%20the%20Computer%20Vision%20for%20Beginners%20webinar%20payment.%20Please%20verify%20my%20seat." 
+                       class="btn btn-secondary" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Support
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 TAITS TECH. All Rights Reserved. | <a href="index.html" class="footer-legal-link" style="text-decoration: underline;">Landing Page</a></p>
+        </div>
+    </footer>
+
+    <!-- Main interaction logic script import -->
+    <script src="js/main.js"></script>
+
+    <!-- Confetti spawner script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Resize canvas to cover viewport
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const colors = ['#0ea5e9', '#0284c7', '#38bdf8', '#22c55e', '#facc15', '#f43f5e'];
+            const particles = [];
+            const particleCount = 100;
+
+            class ConfettiParticle {
+                constructor() {
+                    this.x = canvas.width / 2;
+                    this.y = canvas.height / 2 + 100; // Explode upwards from above card
+                    this.size = Math.random() * 8 + 4;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Velocities: massive burst upwards and outwards
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 10 + 5;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed - 10; // Bias upwards
+                    
+                    this.gravity = 0.3;
+                    this.friction = 0.98;
+                    this.alpha = 1;
+                    this.decay = Math.random() * 0.015 + 0.01;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    // Draw random stars, squares, or circles
+                    if (Math.random() > 0.5) {
+                        ctx.rect(this.x, this.y, this.size, this.size);
+                    } else {
+                        ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.vx *= this.friction;
+                    this.vy *= this.friction;
+                    this.vy += this.gravity;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.alpha -= this.decay;
+                }
+            }
+
+            // Spawn initial particles burst
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new ConfettiParticle());
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i];
+                    p.update();
+                    p.draw();
+                    
+                    if (p.alpha <= 0 || p.y > canvas.height) {
+                        particles.splice(i, 1);
+                    }
+                }
+
+                if (particles.length > 0) {
+                    requestAnimationFrame(animateConfetti);
+                }
+            }
+
+            // Trigger burst animation after a small delay to align with checkmark reveal
+            setTimeout(() => {
+                animateConfetti();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

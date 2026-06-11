@@ -1,0 +1,707 @@
+/* 
+========================================================================
+   AI Tools for Teachers Webinar Registration System - Form Stylesheet
+   Author: Senior Full Stack Developer & UI/UX Specialist
+========================================================================
+*/
+
+/* --- Multi-step Registration Container --- */
+.register-section {
+    padding: 130px 0 100px 0;
+    min-height: 100vh;
+    background: radial-gradient(120% 120% at 50% 10%, var(--bg-main) 40%, rgba(14, 165, 233, 0.06) 100%);
+    display: flex;
+    align-items: center;
+}
+
+.form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-container {
+    padding: 40px;
+}
+
+/* --- Step Progress Bar --- */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.progress-container::before {
+    content: '';
+    background-color: var(--border-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 3px;
+    width: 100%;
+    z-index: 1;
+}
+
+.progress-bar-fill {
+    content: '';
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 3px;
+    width: 0%;
+    z-index: 2;
+    transition: width 0.4s ease;
+}
+
+.step-node {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-main);
+    border: 3px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 3;
+    transition: all 0.4s ease;
+}
+
+.step-node.active {
+    border-color: var(--primary);
+    background-color: var(--bg-main);
+    color: var(--primary);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.step-node.completed {
+    border-color: var(--success);
+    background-color: var(--success);
+    color: #fff;
+}
+
+.step-label {
+    position: absolute;
+    top: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.step-node.active .step-label {
+    color: var(--primary);
+}
+
+.step-node.completed .step-label {
+    color: var(--success);
+}
+
+/* --- Form Steps Layout --- */
+.form-step {
+    display: none;
+    animation: fadeInSlide 0.4s ease forwards;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Form Fields UI --- */
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group.half-width {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+label span {
+    color: #ef4444;
+}
+
+.input-control {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.input-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input-control::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Select Fields Custom Styling */
+select.input-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230ea5e9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Radio Button Grid */
+.radio-group-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-card {
+    position: relative;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.radio-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.radio-checkmark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform: scale(0);
+    transition: var(--transition);
+}
+
+.radio-card input[type="radio"]:checked ~ .radio-checkmark {
+    border-color: var(--primary);
+}
+
+.radio-card input[type="radio"]:checked ~ .radio-checkmark::after {
+    transform: scale(1);
+}
+
+.radio-card:hover {
+    border-color: var(--primary);
+    background-color: var(--accent-glow);
+}
+
+.radio-card input[type="radio"]:checked ~ span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* --- Conditional Form Fields --- */
+.conditional-fields {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.conditional-fields.show {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+/* --- Step 2: Payment Custom styles --- */
+.payment-info-box {
+    text-align: center;
+    padding: 24px;
+    background: var(--accent-glow);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-bottom: 24px;
+}
+
+.payment-fee {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 8px 0;
+}
+
+.qr-link {
+    display: block;
+    max-width: 210px;
+    margin: 20px auto;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.qr-link:hover {
+    transform: translateY(-4px);
+}
+
+.qr-code-wrapper {
+    background: #fff;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    width: 210px;
+    height: 210px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Direct UPI Pay Button green scheme */
+.upi-pay-btn {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25) !important;
+    color: #fff !important;
+}
+
+.upi-pay-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857) !important;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+.upi-id-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+.upi-id {
+    font-weight: 700;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--border-color);
+}
+
+.copy-upi-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    transition: var(--transition);
+}
+
+.copy-upi-btn:hover {
+    color: var(--primary-hover);
+    transform: scale(1.1);
+}
+
+/* Instructions lists */
+.instructions-list {
+    text-align: left;
+    margin: 20px 0;
+    padding-left: 20px;
+    font-size: 0.9rem;
+}
+
+.instructions-list li {
+    list-style-type: decimal;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+/* Drag & Drop File Zone */
+.drag-drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 30px;
+    text-align: center;
+    background-color: var(--bg-main);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.drag-drop-zone.dragover {
+    border-color: var(--primary);
+    background-color: var(--accent-glow);
+}
+
+.drag-drop-icon {
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.drag-drop-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.drag-drop-text span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.drag-drop-subtext {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.file-input-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Image preview box */
+.screenshot-preview-container {
+    margin-top: 15px;
+    display: none;
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.screenshot-preview-container.active {
+    display: block;
+}
+
+.screenshot-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    display: block;
+    background-color: rgba(15, 23, 42, 0.05);
+    padding: 10px;
+}
+
+.remove-screenshot-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(239, 68, 68, 0.9);
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.remove-screenshot-btn:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+/* --- Step 3: Confirmation Styles --- */
+.confirm-checkbox-group {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    user-select: none;
+    transition: var(--transition);
+}
+
+.confirm-checkbox-group:hover {
+    border-color: var(--primary);
+    background-color: var(--accent-glow);
+}
+
+.confirm-checkbox-group input[type="checkbox"] {
+    margin-top: 4px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.confirm-checkbox-group span {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+/* Referral grid */
+.referral-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.referral-card {
+    position: relative;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    font-size: 0.85rem;
+}
+
+.referral-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.referral-dot {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.referral-dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform: scale(0);
+    transition: var(--transition);
+}
+
+.referral-card input[type="radio"]:checked ~ .referral-dot {
+    border-color: var(--primary);
+}
+
+.referral-card input[type="radio"]:checked ~ .referral-dot::after {
+    transform: scale(1);
+}
+
+.referral-card:hover {
+    border-color: var(--primary);
+    background-color: var(--accent-glow);
+}
+
+.referral-card input[type="radio"]:checked ~ span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Receive updates switch */
+.updates-switch-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-top: 24px;
+}
+
+.switch-label-info h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.switch-label-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+    background-color: var(--primary);
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* --- Form Error Validation Styles --- */
+.error-msg {
+    color: #ef4444;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+}
+
+.form-group.invalid .input-control {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.03);
+}
+
+.form-group.invalid .error-msg {
+    display: block;
+}
+
+/* --- Form Navigation Button Bar --- */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.form-navigation .btn {
+    flex: 1;
+}
+
+.form-navigation .btn-prev {
+    display: none;
+}
+
+/* Button Loading Spinner State */
+.btn-loading {
+
+    position: relative;
+    color: white !important;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btnSpinner 0.8s linear infinite;
+}
+
+@keyframes btnSpinner {
+    to { transform: rotate(360deg); }
+}

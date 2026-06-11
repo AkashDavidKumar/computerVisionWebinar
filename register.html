@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinar Registration | Computer Vision For Beginners</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Secure your seat for the TAITS TECH Computer Vision for Beginners Webinar. Easy multi-step registration and secure UPI payment setup.">
+    <meta name="keywords" content="webinar registration, computer vision webinar, taits tech">
+    <meta name="author" content="TAITS TECH">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Dynamic Theme Initializer script (prevents theme flashing) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 
+                               (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- PRE-LOADER SCREEN -->
+    <div id="loader-screen" class="loader-screen">
+        <div class="loader-spinner"></div>
+        <h4 style="font-weight: 600; color: var(--primary);">Secure Checkout Portal</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Initializing Multi-Step Form...</p>
+    </div>
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress-container">
+        <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="images/logo.jpeg" alt="TAITS TECH Logo" style="height: 40px; border-radius: 4px;">
+                TAITS <span>TECH</span>
+            </a>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> <span>Landing Page</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN REGISTRATION SECTION -->
+    <section class="register-section">
+        <div class="container">
+            <div class="form-wrapper">
+                
+                <!-- Registration Progress Nodes -->
+                <div class="progress-container">
+                    <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    
+                    <div class="step-node active" id="node-1">
+                        1
+                        <span class="step-label">Personal Details</span>
+                    </div>
+                    <div class="step-node" id="node-2">
+                        2
+                        <span class="step-label">Secure Payment</span>
+                    </div>
+                    <div class="step-node" id="node-3">
+                        3
+                        <span class="step-label">Confirmation</span>
+                    </div>
+                </div>
+
+                <!-- Multi-step Form Card -->
+                <form id="registration-form" class="glass-card form-container" novalidate>
+                    
+                    <!-- ==========================================
+                         STEP 1: PERSONAL DETAILS
+                         ========================================== -->
+                    <div class="form-step active" id="step-1">
+                        <h3 class="step-title"><i class="fas fa-user-edit" style="color:var(--primary); margin-right:8px;"></i> Step 1: Personal Details</h3>
+                        
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="full-name">Full Name <span>*</span></label>
+                            <input type="text" id="full-name" name="full-name" class="input-control" placeholder="Enter your full name" required minlength="3">
+                            <span class="error-msg">Full Name must be at least 3 characters.</span>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-group">
+                            <label for="email-address">Email Address <span>*</span></label>
+                            <input type="email" id="email-address" name="email-address" class="input-control" placeholder="example@gmail.com" required>
+                            <span class="error-msg">Please enter a valid email address.</span>
+                        </div>
+
+                        <!-- Mobile and WhatsApp half-width fields -->
+                        <div class="form-group half-width">
+                            <div>
+                                <label for="mobile-number">Mobile Number <span>*</span></label>
+                                <input type="tel" id="mobile-number" name="mobile-number" class="input-control" placeholder="10-digit number" required pattern="[6-9][0-9]{9}">
+                                <span class="error-msg">Enter a valid 10-digit mobile number.</span>
+                            </div>
+                            <div>
+                                <label for="whatsapp-number">WhatsApp Number <span>*</span></label>
+                                <input type="tel" id="whatsapp-number" name="whatsapp-number" class="input-control" placeholder="10-digit number" required pattern="[6-9][0-9]{9}">
+                                <span class="error-msg">Enter a valid WhatsApp number.</span>
+                            </div>
+                        </div>
+
+                        <!-- College / School Name -->
+                        <div class="form-group">
+                            <label for="college-school-name">College / School / Institution Name <span>*</span></label>
+                            <input type="text" id="college-school-name" name="college-school-name" class="input-control" placeholder="Enter school or college name" required>
+                            <span class="error-msg">Institution name is required.</span>
+                        </div>
+
+                        <!-- District & State half-width fields -->
+                        <div class="form-group half-width">
+                            <div>
+                                <label for="district">District <span>*</span></label>
+                                <input type="text" id="district" name="district" class="input-control" placeholder="Enter your district" required>
+                                <span class="error-msg">District is required.</span>
+                            </div>
+                            <div>
+                                <label for="state">State <span>*</span></label>
+                                <select id="state" name="state" class="input-control" required>
+                                    <option value="" disabled selected>Select State</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Other / Union Territory">Other / Union Territory</option>
+                                </select>
+                                <span class="error-msg">Please select your state.</span>
+                            </div>
+                        </div>
+
+                        <!-- Profession Selection -->
+                        <div class="form-group">
+                            <label>Profession <span>*</span></label>
+                            <div class="radio-group-grid">
+                                <label class="radio-card" for="prof-teaching">
+                                    <input type="radio" id="prof-teaching" name="profession" value="Teaching Staff" required>
+                                    <div class="radio-checkmark"></div>
+                                    <span>Teaching Staff</span>
+                                </label>
+                                <label class="radio-card" for="prof-student">
+                                    <input type="radio" id="prof-student" name="profession" value="Student">
+                                    <div class="radio-checkmark"></div>
+                                    <span>Student</span>
+                                </label>
+                                <label class="radio-card" for="prof-coord">
+                                    <input type="radio" id="prof-coord" name="profession" value="Academic Coordinator">
+                                    <div class="radio-checkmark"></div>
+                                    <span>Academic Coordinator</span>
+                                </label>
+                                <label class="radio-card" for="prof-other">
+                                    <input type="radio" id="prof-other" name="profession" value="Other">
+                                    <div class="radio-checkmark"></div>
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                            <span class="error-msg" style="margin-top:10px;">Please select your profession.</span>
+                        </div>
+
+                        <!-- Conditional Logic: Teaching Staff Specific Questions -->
+                        <div id="teaching-conditional-fields" class="conditional-fields">
+                            <div class="form-group half-width">
+                                <div>
+                                    <label for="subject-handled">Subject Handled <span>*</span></label>
+                                    <select id="subject-handled" name="subject-handled" class="input-control">
+                                        <option value="" disabled selected>Select Subject</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Biology">Biology</option>
+                                        <option value="English">English</option>
+                                        <option value="Tamil">Tamil</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Economics">Economics</option>
+                                        <option value="History">History</option>
+                                        <option value="Geography">Geography</option>
+                                        <option value="Physical Education">Physical Education</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <span class="error-msg">Subject handled is required.</span>
+                                </div>
+                                <div>
+                                    <label for="experience">Experience <span>*</span></label>
+                                    <select id="experience" name="experience" class="input-control">
+                                        <option value="" disabled selected>Select Experience</option>
+                                        <option value="Less than 1 Year">Less than 1 Year</option>
+                                        <option value="1-3 Years">1-3 Years</option>
+                                        <option value="3-5 Years">3-5 Years</option>
+                                        <option value="5-10 Years">5-10 Years</option>
+                                        <option value="10+ Years">10+ Years</option>
+                                    </select>
+                                    <span class="error-msg">Teaching experience is required.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Question: AI Experience -->
+                        <div class="form-group">
+                            <label for="ai-experience">How familiar are you with AI? <span>*</span></label>
+                            <select id="ai-experience" name="ai-experience" class="input-control" required>
+                                <option value="" disabled selected>Select AI Level</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Never Used Before">Never Used Before</option>
+                            </select>
+                            <span class="error-msg">AI Experience level is required.</span>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         STEP 2: PAYMENT
+                         ========================================== -->
+                    <div class="form-step" id="step-2">
+                        <h3 class="step-title"><i class="fas fa-wallet" style="color:var(--primary); margin-right:8px;"></i> Step 2: Registration Payment</h3>
+                        
+                        <div class="payment-info-box">
+                            <span class="badge">Fixed Registration Fee</span>
+                            <div class="payment-fee"><span class="dynamic-price-text">₹49</span></div>
+                            <p style="font-size:0.9rem; color:var(--text-muted);">Please scan the QR code or copy the UPI ID below to complete your payment.</p>
+                            
+                            <!-- Visual premium UPI QR Code template placeholder image -->
+                            <a href="upi://pay?pa=tonybaskar83@okaxis&pn=Tony%20Baskar%20Y&am=49&cu=INR&tn=AI%20Tools%20Webinar" class="qr-link dynamic-upi-pay-link" title="Pay ₹49 via UPI (Mobile Only)">
+                                <div class="qr-code-wrapper">
+                                    <img class="qr-image" src="images/Payment_QR_Cropped-49rs.jpeg" alt="UPI QR Code Payment Template">
+                                </div>
+                            </a>
+                            <p class="mobile-only-note" style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: -12px; margin-bottom: 20px; font-weight: 500;">
+                                <i class="fas fa-mobile-alt"></i> Click QR to pay via UPI App (Mobile Only)
+                            </p>
+                            
+                            <div class="upi-id-box">
+                                <span>UPI ID:</span>
+                                <span class="upi-id">tonybaskar83@okaxis</span>
+                                <button id="copy-upi-btn" class="copy-upi-btn" title="Copy UPI ID" aria-label="Copy UPI ID">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            
+                            <a href="upi://pay?pa=tonybaskar83@okaxis&pn=Tony%20Baskar%20Y&am=49&cu=INR&tn=AI%20Tools%20Webinar" class="btn btn-primary upi-pay-btn dynamic-upi-pay-link" style="margin-top: 20px; width: 100%; display: inline-flex; justify-content: center; gap: 8px;">
+                                <i class="fas fa-wallet"></i> Pay ₹49 via UPI App (Mobile Only)
+                            </a>
+                        </div>
+
+                        <!-- Action steps instructions -->
+                        <ol class="instructions-list">
+                            <li>Scan the QR Code above or enter/copy the UPI ID: <strong>tonybaskar83@okaxis</strong>.</li>
+                            <li>Complete the payment of <strong><span class="dynamic-price-text">₹49</span></strong> precisely.</li>
+                            <li>Take a screenshot of the payment receipt.</li>
+                            <li>Enter the Transaction ID and upload the screenshot below for verification.</li>
+                        </ol>
+
+                        <!-- Transaction ID -->
+                        <div class="form-group">
+                            <label for="transaction-id">Transaction ID / UTR <span>*</span></label>
+                            <input type="text" id="transaction-id" name="transaction-id" class="input-control" placeholder="Enter UPI transaction ID (e.g. 12-digit number)" required minlength="6">
+                            <span class="error-msg">A valid Transaction ID is required.</span>
+                        </div>
+
+                        <!-- Screenshot upload -->
+                        <div class="form-group">
+                            <label>Upload Payment Screenshot <span>*</span></label>
+                            <div id="drag-drop-zone" class="drag-drop-zone">
+                                <div class="drag-drop-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="drag-drop-text">Drag and drop file here or <span>Browse File</span></div>
+                                <div class="drag-drop-subtext">Supports PNG, JPG, JPEG (Max 5MB)</div>
+                                <input type="file" id="payment-screenshot" class="file-input-hidden" accept="image/png, image/jpeg, image/jpg" required>
+                            </div>
+                            
+                            <!-- Dynamic image file preview -->
+                            <div id="screenshot-preview-container" class="screenshot-preview-container">
+                                <img id="screenshot-preview-img" class="screenshot-img" src="" alt="Payment screenshot preview">
+                                <button id="remove-screenshot-btn" class="remove-screenshot-btn" title="Remove image" aria-label="Remove image">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                            <span class="error-msg" style="margin-top:10px;">Please upload a valid image file under 5MB.</span>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         STEP 3: CONFIRMATION
+                         ========================================== -->
+                    <div class="form-step" id="step-3">
+                        <h3 class="step-title"><i class="fas fa-clipboard-check" style="color:var(--primary); margin-right:8px;"></i> Step 3: Registration Confirmation</h3>
+                        
+                        <!-- Details confirmation radio -->
+                        <div class="form-group">
+                            <label>I confirm all details entered are correct. <span>*</span></label>
+                            <div class="radio-group-grid" style="grid-template-columns: repeat(2, 1fr);">
+                                <label class="radio-card" for="confirm-yes">
+                                    <input type="radio" id="confirm-yes" name="confirm-details" value="Yes" required>
+                                    <div class="radio-checkmark"></div>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-card" for="confirm-no">
+                                    <input type="radio" id="confirm-no" name="confirm-details" value="No">
+                                    <div class="radio-checkmark"></div>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                            <span class="error-msg" style="margin-top:10px;">Please confirm your details are correct.</span>
+                        </div>
+
+                        <!-- WhatsApp Channel Invite Banner -->
+                        <div class="whatsapp-channel-card" style="background: rgba(37, 211, 102, 0.08); border: 1px dashed #25d366; border-radius: var(--radius-sm); padding: 20px; text-align: center; margin-bottom: 24px; margin-top: 10px;">
+                            <i class="fab fa-whatsapp" style="font-size: 2.2rem; color: #25d366; margin-bottom: 10px;"></i>
+                            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main);">Join TAITS TECH WhatsApp Channel</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Get instant webinar announcements, payment verification status updates, and computer vision handouts directly on WhatsApp!</p>
+                            <a href="https://whatsapp.com/channel/0029Va9Ed2E35DF0yourchannel" target="_blank" class="btn" style="background-color: #25d366; color: #ffffff; padding: 10px 20px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; border-radius: var(--radius-sm); font-weight: 600; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); transition: all 0.3s ease;">
+                                <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
+                            </a>
+                        </div>
+
+                        <!-- Source Feedback -->
+                        <div class="form-group" style="margin-top:20px;">
+                            <label>How did you hear about this webinar? <span>*</span></label>
+                            <div class="referral-grid">
+                                <label class="referral-card" for="ref-whatsapp">
+                                    <input type="radio" id="ref-whatsapp" name="referral-source" value="WhatsApp" required>
+                                    <div class="referral-dot"></div>
+                                    <span>WhatsApp</span>
+                                </label>
+                                <label class="referral-card" for="ref-instagram">
+                                    <input type="radio" id="ref-instagram" name="referral-source" value="Instagram">
+                                    <div class="referral-dot"></div>
+                                    <span>Instagram</span>
+                                </label>
+                                <label class="referral-card" for="ref-facebook">
+                                    <input type="radio" id="ref-facebook" name="referral-source" value="Facebook">
+                                    <div class="referral-dot"></div>
+                                    <span>Facebook</span>
+                                </label>
+                                <label class="referral-card" for="ref-friend">
+                                    <input type="radio" id="ref-friend" name="referral-source" value="Friend">
+                                    <div class="referral-dot"></div>
+                                    <span>Friend</span>
+                                </label>
+                                <label class="referral-card" for="ref-teacher">
+                                    <input type="radio" id="ref-teacher" name="referral-source" value="Teacher">
+                                    <div class="referral-dot"></div>
+                                    <span>Teacher</span>
+                                </label>
+                                <label class="referral-card" for="ref-college">
+                                    <input type="radio" id="ref-college" name="referral-source" value="College Group">
+                                    <div class="referral-dot"></div>
+                                    <span>College Group</span>
+                                </label>
+                                <label class="referral-card" for="ref-other">
+                                    <input type="radio" id="ref-other" name="referral-source" value="Other">
+                                    <div class="referral-dot"></div>
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                            <span class="error-msg" style="margin-top:10px;">Please let us know how you heard about us.</span>
+                        </div>
+
+                        <!-- Updates switch Yes/No -->
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>Would you like updates about future TAITS TECH workshops? <span>*</span></label>
+                            <div class="radio-group-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 10px;">
+                                <label class="radio-card" for="updates-yes">
+                                    <input type="radio" id="updates-yes" name="receive-updates" value="Yes" checked required>
+                                    <div class="radio-checkmark"></div>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-card" for="updates-no">
+                                    <input type="radio" id="updates-no" name="receive-updates" value="No">
+                                    <div class="radio-checkmark"></div>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                            <span class="error-msg" style="margin-top:10px;">Please select an option.</span>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         FORM NAVIGATION CONTROL BAR
+                         ========================================== -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary btn-prev" id="btn-prev"><i class="fas fa-chevron-left"></i> Previous</button>
+                        <button type="button" class="btn btn-primary btn-next" id="btn-next">Next <i class="fas fa-chevron-right"></i></button>
+                        <button type="submit" class="btn btn-primary btn-submit pulse-primary" id="btn-submit"><i class="fas fa-check-circle"></i> Complete Registration</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 TAITS TECH. All Rights Reserved. | <a href="index.html" class="footer-legal-link" style="text-decoration: underline;">Landing Page</a></p>
+        </div>
+    </footer>
+
+    <!-- Script inputs -->
+    <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

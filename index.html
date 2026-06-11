@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Vision For Beginners | TAITS TECH Webinar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Join TAITS TECH's Computer Vision for Beginners webinar. Learn how computers see images, explore AI applications, and build your first Computer Vision project through a live demonstration.">
+    <meta name="keywords" content="Computer Vision, Artificial Intelligence, AI Webinar, Machine Learning, Deep Learning, Python, Image Processing, TAITS TECH">
+    <meta name="author" content="TAITS TECH">
+    
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Computer Vision For Beginners Live Webinar | TAITS TECH">
+    <meta property="og:description" content="Join TAITS TECH's Computer Vision for Beginners webinar. Learn how computers see images, explore AI applications, and build your first Computer Vision project through a live demonstration.">
+    <meta property="og:image" content="images/logo.jpeg">
+    <meta property="og:url" content="https://taitstech.com/computer-vision-webinar">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Computer Vision For Beginners Live Webinar | TAITS TECH">
+    <meta name="twitter:description" content="Join TAITS TECH's Computer Vision for Beginners webinar. Learn how computers see images, explore AI applications, and build your first Computer Vision project through a live demonstration.">
+
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Dynamic Theme Initializer script (prevents theme flashing) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 
+                               (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- SYSTEM SCREEN PRE-LOADER -->
+    <div id="loader-screen" class="loader-screen">
+        <div class="loader-spinner"></div>
+        <h4 style="font-weight: 600; color: var(--primary);">TAITS TECH</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Preparing Learning System...</p>
+    </div>
+
+    <!-- SCROLL PROGRESS INDICATOR -->
+    <div class="scroll-progress-container">
+        <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="images/logo.jpeg" alt="TAITS TECH Logo" style="height: 40px; border-radius: 4px;">
+                TAITS <span>TECH</span>
+            </a>
+            
+            <nav id="nav-menu" class="nav-menu">
+                <a href="#about" class="nav-link">Why Attend</a>
+                <a href="#curriculum" class="nav-link">What You'll Learn</a>
+                <a href="#benefits" class="nav-link">Giveaways</a>
+                <a href="#trainer" class="nav-link">Trainer</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <!-- Theme toggle dark mode button -->
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="register.html" class="btn btn-primary pulse-primary"><i class="fas fa-user-plus"></i> <span>Register Now</span></a>
+                
+                <!-- Responsive hamburger toggler -->
+                <div id="menu-toggle" class="menu-toggle" aria-label="Open Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="hero">
+        <div class="particle-background"></div>
+        <div class="container grid-2">
+            
+            <!-- Hero content left -->
+            <div class="hero-content">
+                <span class="badge"><i class="fas fa-certificate"></i> TAITS TECH Presents</span>
+                <h1 class="hero-title">Computer Vision for <span>Beginners</span></h1>
+                <p class="hero-subtitle">Learn. Build. Innovate.</p>
+                <p class="hero-description">Learn how computers see and process images, explore real-world artificial intelligence applications, watch a hands-on project demonstration, and discover career opportunities in AI and Machine Learning!</p>
+                
+                <!-- Webinar details highlights -->
+                <div class="hero-meta">
+                    <div class="meta-item"><i class="far fa-calendar-alt"></i> Saturday</div>
+                    <div class="meta-item"><i class="far fa-clock"></i> 6:00 PM – 7:30 PM</div>
+                    <div class="meta-item"><i class="fas fa-laptop-house"></i> Online (Google Meet)</div>
+                    <div class="meta-item fee"><i class="fas fa-tags"></i> <span class="dynamic-price-text">₹49</span> Only</div>
+                </div>
+
+                <!-- Call to actions -->
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Register For ₹49</a>
+                    <a href="#curriculum" class="btn btn-secondary"><i class="fas fa-list-ul"></i> View Curriculum</a>
+                </div>
+
+                <!-- Interactive Countdown widget -->
+                <div class="countdown-box glass-card">
+                    <div class="countdown-title">Registration Closes In:</div>
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div id="days" class="countdown-number">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div id="hours" class="countdown-number">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div id="minutes" class="countdown-number">00</div>
+                            <div class="countdown-label">Mins</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div id="seconds" class="countdown-number">00</div>
+                            <div class="countdown-label">Secs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero illustration right -->
+            <div class="hero-illustration-container">
+                <div class="floating-icon f-icon-1"><i class="fas fa-brain"></i></div>
+                <div class="floating-icon f-icon-2"><i class="fas fa-camera"></i></div>
+                <div class="floating-icon f-icon-3"><i class="fas fa-eye"></i></div>
+                <div class="floating-icon f-icon-4"><i class="fas fa-microchip"></i></div>
+                
+                <!-- Premium theme vectors inline SVG -->
+                <svg class="hero-svg-illustration" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--primary)" />
+                            <stop offset="100%" stop-color="var(--secondary)" />
+                        </linearGradient>
+                        <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="var(--primary)" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Tech background grid circles -->
+                    <circle cx="250" cy="250" r="220" stroke="url(#accentGrad)" stroke-width="2" stroke-dasharray="8 8"/>
+                    <circle cx="250" cy="250" r="160" stroke="url(#accentGrad)" stroke-width="1"/>
+                    <circle cx="250" cy="250" r="100" fill="rgba(29, 78, 216, 0.05)"/>
+                    
+                    <!-- Core Glow Center -->
+                    <circle cx="250" cy="250" r="70" fill="rgba(251, 191, 36, 0.15)"/>
+                    
+                    <!-- Teacher / Educator Figure Outline SVG -->
+                    <g transform="translate(150, 130)">
+                        <!-- Backdrop Glow Board -->
+                        <rect x="0" y="0" width="200" height="240" rx="16" fill="rgba(15, 23, 42, 0.6)" stroke="var(--primary)" stroke-width="2"/>
+                        <!-- Board Header -->
+                        <rect x="0" y="0" width="200" height="40" rx="16" fill="url(#heroGrad)"/>
+                        <circle cx="20" cy="20" r="6" fill="#fff" opacity="0.8"/>
+                        <circle cx="40" cy="20" r="6" fill="#fff" opacity="0.8"/>
+                        <circle cx="60" cy="20" r="6" fill="#fff" opacity="0.8"/>
+                        
+                        <!-- Drawing on board graphics -->
+                        <line x1="30" y1="80" x2="170" y2="80" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="30" y1="110" x2="130" y2="110" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="30" y1="140" x2="150" y2="140" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="150" cy="180" r="20" fill="none" stroke="var(--success)" stroke-width="4"/>
+                        <line x1="145" y1="180" x2="155" y2="190" stroke="var(--success)" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="155" y1="190" x2="165" y2="170" stroke="var(--success)" stroke-width="3" stroke-linecap="round"/>
+                        
+                        <!-- Mini robot helper -->
+                        <rect x="15" y="170" width="40" height="30" rx="6" fill="var(--primary)" />
+                        <circle cx="25" cy="185" r="3" fill="#fff"/>
+                        <circle cx="45" cy="185" r="3" fill="#fff"/>
+                        <line x1="35" y1="170" x2="35" y2="160" stroke="var(--primary)" stroke-width="2"/>
+                        <circle cx="35" cy="158" r="4" fill="var(--accent)"/>
+                    </g>
+                </svg>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- MOBILE STICKY CTA BAR -->
+    <div class="sticky-mobile-cta">
+        <div class="fee-info">
+            <span class="fee-val"><span class="dynamic-price-text">₹49</span> Only</span>
+            <span class="fee-lbl">Seats Filling Fast!</span>
+        </div>
+        <a href="register.html" class="btn btn-primary pulse-primary">Register Now</a>
+    </div>
+
+    <!-- SECTION 2: ABOUT WEBINAR -->
+    <section id="about" class="about section-padding">
+        <div class="container text-center">
+            <span class="badge">About The Webinar</span>
+            <h2 class="section-title">Why Attend This <span>Webinar?</span></h2>
+            <p class="section-subtitle">Learn practical, hands-on techniques in Computer Vision and AI. Discover how systems recognize images, build real-world applications, and boost your technical career.</p>
+            
+            <div class="grid-3 about-cards">
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="about-card-title">Beginner Friendly Session</h3>
+                    <p class="about-card-text">Perfect for school/college students and Python enthusiasts who want a solid introduction to AI with zero jargon.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="about-card-title">Practical Walkthrough</h3>
+                    <p class="about-card-text">Watch a step-by-step walkthrough and live demonstration of building a real-world Computer Vision project.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="about-card-title">Career Acceleration</h3>
+                    <p class="about-card-text">Explore top career opportunities in AI, Machine Learning, and Deep Learning fields, and earn a participation certificate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: WHAT YOU WILL LEARN -->
+    <section id="curriculum" class="learn section-padding">
+        <div class="container text-center">
+            <span class="badge">Master Syllabus</span>
+            <h2 class="section-title">What You Will <span>Learn?</span></h2>
+            <p class="section-subtitle">Get comprehensive hands-on training with these 6 action-focused learning chapters.</p>
+            
+            <div class="grid-3">
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-eye"></i></div>
+                    <h4 class="learn-card-title">1. Introduction to Computer Vision</h4>
+                    <p class="learn-card-desc">Understand the fundamentals of how machines perceive digital images and video streams.</p>
+                </div>
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-images"></i></div>
+                    <h4 class="learn-card-title">2. How Computers "See" Images</h4>
+                    <p class="learn-card-desc">Learn about RGB color channels, pixels, image arrays, and simple image processing operations.</p>
+                </div>
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-brain"></i></div>
+                    <h4 class="learn-card-title">3. Applications of AI & Computer Vision</h4>
+                    <p class="learn-card-desc">Explore visual models in self-driving cars, face detection, security systems, and healthcare.</p>
+                </div>
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-video"></i></div>
+                    <h4 class="learn-card-title">4. Hands-On Project Demonstration</h4>
+                    <p class="learn-card-desc">Watch a live demonstration building a camera-based object recognition system from scratch.</p>
+                </div>
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-code"></i></div>
+                    <h4 class="learn-card-title">5. Step-by-Step Project Explanation</h4>
+                    <p class="learn-card-desc">Get a detailed code breakdown of the Python scripts, OpenCV library usage, and AI model parameters.</p>
+                </div>
+                <div class="learn-card glass-card">
+                    <div class="learn-icon"><i class="fas fa-briefcase"></i></div>
+                    <h4 class="learn-card-title">6. Career Opportunities in AI & CV</h4>
+                    <p class="learn-card-desc">Learn about standard learning pathways, required skills, and key jobs in the AI development industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: WHO CAN ATTEND -->
+    <section class="attendees section-padding">
+        <div class="container text-center">
+            <span class="badge">Target Audience</span>
+            <h2 class="section-title">Who Can <span>Attend?</span></h2>
+            <p class="section-subtitle">This webinar is perfect for anyone interested in entering the world of Artificial Intelligence and Computer Vision.</p>
+            
+            <div class="grid-3" style="justify-content: center;">
+                <div class="attendee-card glass-card">
+                    <div class="attendee-icon"><i class="fas fa-school"></i></div>
+                    <div class="attendee-info">
+                        <h4>School Students</h4>
+                        <p>Learn coding and basic AI concepts early in your education.</p>
+                    </div>
+                </div>
+                <div class="attendee-card glass-card">
+                    <div class="attendee-icon"><i class="fas fa-university"></i></div>
+                    <div class="attendee-info">
+                        <h4>College Students</h4>
+                        <p>Gain practical computer vision skills for projects and resumes.</p>
+                    </div>
+                </div>
+                <div class="attendee-card glass-card">
+                    <div class="attendee-icon"><i class="fas fa-user-astronaut"></i></div>
+                    <div class="attendee-info">
+                        <h4>Beginners in AI & ML</h4>
+                        <p>Step-by-step introduction to artificial intelligence with zero jargon.</p>
+                    </div>
+                </div>
+                <div class="attendee-card glass-card">
+                    <div class="attendee-icon"><i class="fab fa-python"></i></div>
+                    <div class="attendee-info">
+                        <h4>Python Enthusiasts</h4>
+                        <p>Expand your scripting capabilities into image and camera processing.</p>
+                    </div>
+                </div>
+                <div class="attendee-card glass-card">
+                    <div class="attendee-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="attendee-info">
+                        <h4>Anyone Interested in Tech</h4>
+                        <p>Explore the future of visual recognition and neural networks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BENEFITS / GIVEAWAYS -->
+    <section id="benefits" class="benefits section-padding">
+        <div class="container text-center">
+            <span class="badge">Student Rewards</span>
+            <h2 class="section-title">What Participants <span>Receive</span></h2>
+            <p class="section-subtitle">Enroll today to secure these 6 high-value giveaways and materials valued at over ₹4,999!</p>
+            
+            <div class="benefits-grid">
+                <!-- Benefits items grid left -->
+                <div class="benefits-list">
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-award"></i></div>
+                        <h4 class="benefit-title">Participation Certificate</h4>
+                        <p class="benefit-desc">TAITS TECH verified qualification badge to decorate your engineering or tech CV.</p>
+                    </div>
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-code"></i></div>
+                        <h4 class="benefit-title">Project Source Code</h4>
+                        <p class="benefit-desc">Ready-to-run Python script and configuration files for the Object Recognition project.</p>
+                    </div>
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-play-circle"></i></div>
+                        <h4 class="benefit-title">Practical Demonstration</h4>
+                        <p class="benefit-desc">Complete walkthrough files detailing live camera recognition setups.</p>
+                    </div>
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-file-archive"></i></div>
+                        <h4 class="benefit-title">Resource Materials</h4>
+                        <p class="benefit-desc">Step-by-step OpenCV guides and tech cheat-sheets for Python developers.</p>
+                    </div>
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-video"></i></div>
+                        <h4 class="benefit-title">Webinar Recording</h4>
+                        <p class="benefit-desc">Lifetime video playback access to review class chapters whenever needed.</p>
+                    </div>
+                    <div class="benefit-item glass-card">
+                        <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                        <h4 class="benefit-title">Community Access</h4>
+                        <p class="benefit-desc">Entry to our VIP WhatsApp group network of innovative tech enthusiasts.</p>
+                    </div>
+                </div>
+
+                <!-- visual card mockup right -->
+                <div class="benefit-mockup-wrapper">
+                    <div class="benefit-badge-floating b-floating-1"><i class="fas fa-check-circle"></i> <span>Source Code Zip</span></div>
+                    <div class="benefit-badge-floating b-floating-2"><i class="fas fa-check-circle"></i> <span>Full HD Recording</span></div>
+                    
+                    <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 380px;">
+                        <rect x="20" y="20" width="360" height="310" rx="20" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-width="2"/>
+                        <circle cx="200" cy="150" r="60" fill="rgba(34, 197, 94, 0.15)"/>
+                        <path d="M180 150L195 165L225 135" stroke="#22c55e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="80" y="240" width="240" height="24" rx="6" fill="#22c55e" />
+                        <text x="200" y="256" fill="#fff" font-family="'Poppins', sans-serif" font-weight="700" font-size="12" text-anchor="middle">REWARDS CLAIMED</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TRAINER SECTION -->
+    <section id="trainer" class="trainer section-padding">
+        <div class="container text-center">
+            <span class="badge">Master Instructor</span>
+            <h2 class="section-title">Meet Your <span>Trainer</span></h2>
+            <p class="section-subtitle">Learn directly from educational technologists dedicated to modernizing schools.</p>
+            
+            <div class="trainer-card-container">
+                <div class="trainer-card glass-card">
+                    <div class="trainer-image-wrapper">
+                        <!-- Custom rendered designer female avatar SVG representing professional educator -->
+                        <svg class="trainer-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="50" fill="#0f172a"/>
+                            <!-- Hair (back) -->
+                            <path d="M30 40 C30 20, 70 20, 70 40 C70 58, 66 72, 66 72 C60 70, 40 70, 34 72 C34 72, 30 58, 30 40 Z" fill="#1e293b"/>
+                            <!-- Neck -->
+                            <rect x="46" y="48" width="8" height="10" fill="#fed7aa"/>
+                            <!-- Face -->
+                            <circle cx="50" cy="35" r="16" fill="#fed7aa"/>
+                            <!-- Hair (front/bangs) -->
+                            <path d="M34 26 C38 18, 50 18, 50 22 C50 18, 62 18, 66 26 C68 29, 62 26, 50 27 C38 26, 32 29, 34 26 Z" fill="#1e293b"/>
+                            <!-- Outfit -->
+                            <path d="M15 78 C15 62, 30 60, 50 60 C70 60, 85 62, 85 78 V85 H15 V78Z" fill="#0ea5e9"/>
+                            <!-- Collar -->
+                            <path d="M42 60 L46 54 L54 54 L58 60 Z" fill="#f8fafc"/>
+                            <!-- Glasses -->
+                            <circle cx="43" cy="35" r="5" stroke="#3b82f6" stroke-width="1.5" fill="none"/>
+                            <circle cx="57" cy="35" r="5" stroke="#3b82f6" stroke-width="1.5" fill="none"/>
+                            <line x1="48" y1="35" x2="52" y2="35" stroke="#3b82f6" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="trainer-info">
+                        <span class="trainer-role">AI Developer & Mentor</span>
+                        <h3 class="trainer-name">Ilakkiya N</h3>
+                        <p class="trainer-bio">Ilakkiya N is a highly skilled AI Developer and professional mentor. With extensive experience in training students and tech professionals, she excels at breaking down complex programming architectures, computer vision models, and technical methodologies into highly practical, easily digestible educational experiences.</p>
+                        
+                        <div class="trainer-features">
+                            <span class="trainer-tag">AI Developer</span>
+                            <span class="trainer-tag">Technical Mentor</span>
+                            <span class="trainer-tag">Python & OpenCV Specialist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: WEBINAR OUTCOMES / TIMELINE -->
+    <section class="outcomes section-padding">
+        <div class="container text-center">
+            <span class="badge">Course Progress</span>
+            <h2 class="section-title">Your Learning <span>Journey</span></h2>
+            <p class="section-subtitle">This is how your skills will elevate after attending this masterclass.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">01</div>
+                        <h3 class="timeline-title">Understand Computer Vision</h3>
+                        <p class="timeline-desc">Master the fundamentals of how machines perceive digital images, RGB color spaces, and video streams.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">02</div>
+                        <h3 class="timeline-title">Hands-On Python Coding</h3>
+                        <p class="timeline-desc">Write scripts using the OpenCV library to process camera feeds and detect visual elements in real-time.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">03</div>
+                        <h3 class="timeline-title">Build Image Recognition</h3>
+                        <p class="timeline-desc">Develop an active camera application that detects and classifies objects using trained machine learning models.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">04</div>
+                        <h3 class="timeline-title">AI & ML Insights</h3>
+                        <p class="timeline-desc">Learn how neural networks, deep learning models, and camera parameters drive advanced visual AI systems.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">05</div>
+                        <h3 class="timeline-title">Explore Tech Careers</h3>
+                        <p class="timeline-desc">Map out your learning path for high-paying roles in AI engineering, computer vision research, and data science.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right-item">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-num">06</div>
+                        <h3 class="timeline-title">Earn Your Certificate</h3>
+                        <p class="timeline-desc">Get a verified participation certificate from TAITS TECH to showcase your computer vision skills to employers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CERTIFICATE PREVIEW -->
+    <section class="certificate section-padding">
+        <div class="container text-center">
+            <span class="badge">Accredited Credentials</span>
+            <h2 class="section-title">Your Official <span>Certificate</span></h2>
+            <p class="section-subtitle">Earn a recognized participation certificate signed by TAITS TECH to boost your professional credentials.</p>
+            
+            <div id="certificate-card" class="certificate-card glass-card cert-secure" data-preview="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 550' fill='%230f172a'><rect x='10' y='10' width='780' height='530' rx='16' fill='%23f8fafc' stroke='%230ea5e9' stroke-width='8'/><rect x='25' y='25' width='750' height='500' fill='none' stroke='%230284c7' stroke-width='2' stroke-dasharray='10 5'/><path d='M25 25L80 25L25 80Z' fill='%230ea5e9'/><path d='M775 25L720 25L775 80Z' fill='%230ea5e9'/><path d='M25 525L80 525L25 470Z' fill='%230ea5e9'/><path d='M775 525L720 525L775 470Z' fill='%230ea5e9'/><text x='400' y='110' fill='%230f172a' font-family='Poppins' font-weight='800' font-size='28' text-anchor='middle' letter-spacing='2'>TAITS TECH</text><text x='400' y='150' fill='%230284c7' font-family='Poppins' font-weight='600' font-size='16' text-anchor='middle' letter-spacing='4'>CERTIFICATE OF PARTICIPATION</text><text x='400' y='220' fill='%23475569' font-family='Poppins' font-size='15' font-style='italic' text-anchor='middle'>This is to proudly certify that</text><text x='400' y='275' fill='%230f172a' font-family='Poppins' font-weight='700' font-size='32' text-anchor='middle'>[Your Name Here]</text><line x1='200' y1='290' x2='600' y2='290' stroke='%230ea5e9' stroke-width='2'/><text x='400' y='340' fill='%23475569' font-family='Poppins' font-size='14' text-anchor='middle'>has successfully completed the live academic professional masterclass on</text><text x='400' y='375' fill='%230f172a' font-family='Poppins' font-weight='600' font-size='18' text-anchor='middle'>COMPUTER VISION FOR BEGINNERS: LIVE WEBINAR</text><text x='400' y='410' fill='%2394a3b8' font-family='Poppins' font-size='12' text-anchor='middle'>Presented by TAITS TECH Team | Duration: 90 Minutes</text><text x='200' y='490' fill='%230f172a' font-family='Poppins' font-weight='600' font-size='12' text-anchor='middle'>TAITS TECH</text><text x='200' y='505' fill='%2394a3b8' font-family='Poppins' font-size='10' text-anchor='middle'>Authorized Registrar</text><text x='600' y='490' fill='%230f172a' font-family='Poppins' font-weight='600' font-size='12' text-anchor='middle'>TAITS TECH TEAM</text><text x='600' y='505' fill='%2394a3b8' font-family='Poppins' font-size='10' text-anchor='middle'>Master Instructor</text><circle cx='400' cy='475' r='30' fill='none' stroke='%2322c55e' stroke-width='4'/><path d='M390 475L397 482L412 467' stroke='%2322c55e' stroke-width='4' fill='none'/></svg>">
+                
+                <div class="certificate-img-container">
+                    <!-- Inline preview of SVG certificate -->
+                    <svg viewBox="0 0 800 550" class="certificate-img">
+                        <!-- Frame borders -->
+                        <rect x="10" y="10" width="780" height="530" rx="16" fill="var(--bg-main)" stroke="var(--primary)" stroke-width="8"/>
+                        <rect x="25" y="25" width="750" height="500" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-dasharray="10 5"/>
+                        
+                        <!-- Badges/Decorations -->
+                        <path d="M25 25L80 25L25 80Z" fill="var(--primary)"/>
+                        <path d="M775 25L720 25L775 80Z" fill="var(--primary)"/>
+                        <path d="M25 525L80 525L25 470Z" fill="var(--primary)"/>
+                        <path d="M775 525L720 525L775 470Z" fill="var(--primary)"/>
+                        
+                        <!-- Copy -->
+                        <text x="400" y="110" fill="var(--text-main)" font-family="Poppins" font-weight="800" font-size="28" text-anchor="middle" letter-spacing="2">TAITS TECH</text>
+                        <text x="400" y="150" fill="var(--primary)" font-family="Poppins" font-weight="600" font-size="16" text-anchor="middle" letter-spacing="4">CERTIFICATE OF PARTICIPATION</text>
+                        
+                        <text x="400" y="220" fill="var(--text-muted)" font-family="Poppins" font-size="15" font-style="italic" text-anchor="middle">This is to proudly certify that</text>
+                        
+                        <text x="400" y="275" fill="var(--text-main)" font-family="Poppins" font-weight="700" font-size="32" text-anchor="middle">Webinar Participant</text>
+                        <line x1="200" y1="290" x2="600" y2="290" stroke="var(--primary)" stroke-width="2"/>
+                        
+                        <text x="400" y="340" fill="var(--text-muted)" font-family="Poppins" font-size="14" text-anchor="middle">has successfully completed the live academic professional masterclass on</text>
+                        <text x="400" y="375" fill="var(--text-main)" font-family="Poppins" font-weight="600" font-size="18" text-anchor="middle">COMPUTER VISION FOR BEGINNERS: LIVE WEBINAR</text>
+                        <text x="400" y="410" fill="var(--text-muted)" font-family="Poppins" font-size="12" text-anchor="middle">Presented by TAITS TECH Team | Duration: 90 Minutes</text>
+                        
+                        <!-- Signatures -->
+                        <text x="200" y="490" fill="var(--text-main)" font-family="Poppins" font-weight="600" font-size="12" text-anchor="middle">TAITS TECH</text>
+                        <text x="200" y="505" fill="var(--text-muted)" font-family="Poppins" font-size="10" text-anchor="middle">Authorized Registrar</text>
+                        
+                        <text x="600" y="490" fill="var(--text-main)" font-family="Poppins" font-weight="600" font-size="12" text-anchor="middle">TAITS TECH TEAM</text>
+                        <text x="600" y="505" fill="var(--text-muted)" font-family="Poppins" font-size="10" text-anchor="middle">Master Instructor</text>
+                        
+                        <!-- Green verified seal -->
+                        <circle cx="400" cy="475" r="30" fill="none" stroke="var(--success)" stroke-width="4"/>
+                        <path d="M390 475L397 482L412 467" stroke="var(--success)" stroke-width="4" fill="none"/>
+                    </svg>
+                </div>
+                
+                <!-- Zoom Hover trigger Overlay -->
+                <div class="certificate-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            
+            <p class="cert-note"><i class="fas fa-info-circle"></i> Click on the certificate to preview full resolution. Right-click copy and downloads are restricted to protect credential systems.</p>
+        </div>
+    </section>
+
+    <!-- ACCREDITATION CERTIFICATE POPUP MODAL -->
+    <div id="cert-modal" class="modal">
+        <div class="modal-content-wrapper">
+            <button id="modal-close" class="modal-close" aria-label="Close Preview">&times;</button>
+            <img id="modal-img" class="modal-img cert-secure" src="" alt="Certificate Large Preview">
+        </div>
+    </div>
+
+    <!-- SECTION 9: TESTIMONIALS SLIDER -->
+    <section class="testimonials section-padding">
+        <div class="container text-center">
+            <span class="badge">Success Stories</span>
+            <h2 class="section-title">Our Success <span>Stories</span></h2>
+            <p class="section-subtitle">Real feedback from teachers who have joined our previous technology masterclasses.</p>
+            
+            <div class="testimonials-carousel glass-card">
+                <div class="testimonials-track">
+                    
+                    <!-- Slide 1 (Mosay) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Today's session is very useful to me 👏"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--primary)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">MS</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Mosay</h4>
+                            <p class="testimonial-author-title">Educator Participant</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 (Edwin Stephano) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Goooood session, With step by step explanation on the page, Good initiative"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--secondary)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">ES</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Edwin Stephano</h4>
+                            <p class="testimonial-author-title">Academic Coordinator</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 (Karthick) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"You handled it well, without any confusion, with clarity. 👍 Keep going 👏 Thank you for your awesome work. 🙏"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--success)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">KT</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Karthick</h4>
+                            <p class="testimonial-author-title">Senior Secondary Teacher</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 (Aadhi) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Today's Session is good and I learned a new thing today. Thank you Tony"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--primary)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">AD</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Aadhi</h4>
+                            <p class="testimonial-author-title">Computer Science Educator</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 (Justin Tony) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Tony I learned a new technology which You have taken today's session thank You and keep it up 💯 🤙"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--secondary)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">JT</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Justin Tony</h4>
+                            <p class="testimonial-author-title">Lecturer & IT Instructor</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 (Ravishankar) -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Nice session, With step by step explanation. Good initiative, Tq Tony"</p>
+                            <svg class="testimonial-author-img" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50" fill="var(--success)"/>
+                                <text x="50" y="60" fill="#fff" font-weight="700" font-size="32" text-anchor="middle">RS</text>
+                            </svg>
+                            <h4 class="testimonial-author-name">Ravishankar</h4>
+                            <p class="testimonial-author-title">Primary School Headmaster</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Dynamic Navigation Carousel indicators -->
+                <div id="carousel-dots" class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FAQ (ACCORDION) -->
+    <section id="faq" class="faq section-padding">
+        <div class="container text-center">
+            <span class="badge">Common Doubts</span>
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <p class="section-subtitle">Quick answers to basic questions regarding joining, certification, and course timings.</p>
+            
+            <div class="faq-container">
+                
+                <!-- Q1 -->
+                <div class="faq-item glass-card">
+                    <button class="faq-trigger" aria-expanded="false">
+                        Is this webinar live?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Yes. This is a fully interactive, live-streamed online masterclass. Our expert training team will guide you through live software workflows, prompt engineering, and host an interactive Q&A session at the end.</p>
+                    </div>
+                </div>
+                
+                <!-- Q2 -->
+                <div class="faq-item glass-card">
+                    <button class="faq-trigger" aria-expanded="false">
+                        Will certificate be provided?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Absolutely! All registered attendees who complete the live session will receive an official, verifiable Certificate of Participation from TAITS TECH within 24 hours of attendance.</p>
+                    </div>
+                </div>
+                
+                <!-- Q3 -->
+                <div class="faq-item glass-card">
+                    <button class="faq-trigger" aria-expanded="false">
+                        Can students attend?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Yes. School students, college students, Python beginners, and anyone interested in AI and machine learning are highly welcome. Getting started with Computer Vision early offers a massive head start in your tech career.</p>
+                    </div>
+                </div>
+                
+                <!-- Q4 -->
+                <div class="faq-item glass-card">
+                    <button class="faq-trigger" aria-expanded="false">
+                        Will recording be shared?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Yes. We understand you might have a busy schedule. Lifetime access to the complete webinar HD video recording is provided to all registered participants to review the content anytime.</p>
+                    </div>
+                </div>
+                
+                <!-- Q5 -->
+                <div class="faq-item glass-card">
+                    <button class="faq-trigger" aria-expanded="false">
+                        How do I join?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Once you complete the <span class="dynamic-price-text">₹49</span> registration form, enter your Transaction ID, and upload your payment screenshot, our admin team verifies your payment. Upon verification, the private webinar joining link, VIP WhatsApp group invite, and schedule details are dispatched immediately via email and WhatsApp.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: FINAL CTA -->
+    <section class="final-cta section-padding">
+        <div class="container text-center">
+            <div class="cta-box glass-card">
+                <span class="badge"><i class="fas fa-exclamation-triangle"></i> Limited Seats Remaining!</span>
+                <h2 class="cta-title">Master Computer Vision Today</h2>
+                <p class="cta-desc">Start your journey in AI and Machine Learning. Learn how computers see and build your first Computer Vision project through a live demonstration.</p>
+                <div style="font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); font-weight: 700;">Registration Fee: <span class="dynamic-price-text">₹49</span> Only (Inclusive of all rewards)</div>
+                <a href="register.html" class="btn btn-primary pulse-primary btn-lg"><i class="fas fa-user-plus"></i> Register For ₹49</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12: FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Footer Brand Column -->
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px;">
+                        <img src="images/logo.jpeg" alt="TAITS TECH Logo" style="height: 40px; border-radius: 4px;">
+                        TAITS <span>TECH</span>
+                    </a>
+                    <p>TAITS TECH is dedicated to providing cutting-edge technology training, hands-on workshops, and industry-oriented courses in Artificial Intelligence, Software Development, and Computer Vision.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/taitstech/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/taitstech/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/917695835780" class="social-link" style="background-color:#25d366; border-color:#25d366; color:#fff" aria-label="WhatsApp Support"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Footer Links Column -->
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="footer-link"><i class="fas fa-angle-right"></i> Why Attend</a></li>
+                        <li><a href="#curriculum" class="footer-link"><i class="fas fa-angle-right"></i> What You'll Learn</a></li>
+                        <li><a href="#benefits" class="footer-link"><i class="fas fa-angle-right"></i> Participant Giveaways</a></li>
+                        <li><a href="#trainer" class="footer-link"><i class="fas fa-angle-right"></i> Instructor Profile</a></li>
+                        <li><a href="#faq" class="footer-link"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                        <li><a href="register.html" class="footer-link"><i class="fas fa-angle-right"></i> Buy Ticket (<span class="dynamic-price-text">₹49</span>)</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Footer Contact Column -->
+                <div>
+                    <h4 class="footer-title">Contact Support</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p style="color:#fff; font-weight:600">Email Address</p>
+                            <a href="mailto:baskartechacademy2025@gmail.com">baskartechacademy2025@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <p style="color:#fff; font-weight:600">WhatsApp Helpdesk</p>
+                            <a href="https://wa.me/917695835780" target="_blank">+91 76958 35780</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Bottom Copyright bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 TAITS TECH. All Rights Reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#" class="footer-legal-link">Privacy Policy</a>
+                    <a href="#" class="footer-legal-link">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTIONS (WHATSAPP & BACK TO TOP) -->
+    <div class="floating-actions">
+        <!-- Floating Whatsapp Support -->
+        <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" 
+           class="floating-btn whatsapp-float" 
+           target="_blank" 
+           aria-label="Chat with Support on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <!-- Back-to-Top trigger -->
+        <button id="back-to-top" class="floating-btn back-to-top" aria-label="Scroll Back to Top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Script imports -->
+    <script src="js/countdown.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
