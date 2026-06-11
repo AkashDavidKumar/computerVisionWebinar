@@ -348,24 +348,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
         
         else if (stepIndex === 1) {
-            // STEP 2 VALIDATIONS (Payment)
-            const transactionIdInput = document.getElementById('transaction-id');
-            
-            // Transaction ID check
-            if (!transactionIdInput || transactionIdInput.value.trim().length < 6) {
-                showError(transactionIdInput || screenshotInput, "Please enter a valid Transaction ID (minimum 6 characters).");
-                isValid = false;
-            } else {
-                if (transactionIdInput) clearError(transactionIdInput);
-            }
-
-            // Screenshot check
-            if (screenshotBase64 === "") {
-                showError(screenshotInput, "Please upload your payment screenshot.");
-                isValid = false;
-            } else {
-                clearError(screenshotInput);
-            }
+            // STEP 2 VALIDATIONS (Payment) - Screenshot is optional and Transaction ID is removed
+            clearError(screenshotInput);
         } 
         
         else if (stepIndex === 2) {
@@ -432,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subject: "N/A",
             experience: "N/A",
             aiExperience: formData.get('ai-experience'),
-            transactionId: formData.get('transaction-id') || "N/A",
+            transactionId: "N/A",
             // Screenshot files passed as base64 string directly
             screenshotBase64: screenshotBase64,
             screenshotName: screenshotFileName,
