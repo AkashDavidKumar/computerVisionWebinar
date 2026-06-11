@@ -23,11 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNext = document.getElementById('btn-next');
     const btnSubmit = document.getElementById('btn-submit');
     
-    // Profession Toggles
-    const professionRadios = document.getElementsByName('profession');
-    const teachingFields = document.getElementById('teaching-conditional-fields');
-    const subjectHandledInput = document.getElementById('subject-handled');
-    const experienceInput = document.getElementById('experience');
+    // Same as Mobile Number elements
+    const sameAsMobileCheckbox = document.getElementById('same-as-mobile');
+    const mobileNumberInput = document.getElementById('mobile-number');
+    const whatsappNumberInput = document.getElementById('whatsapp-number');
 
     // Drag and Drop Screenshot Upload elements
     const dragDropZone = document.getElementById('drag-drop-zone');
@@ -107,40 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFormSteps();
     });
 
-    // ========================================================================
-    // 2. CONDITIONAL FORM FIELDS LOGIC (PROFESSION TOGGLES)
-    // ========================================================================
-    function handleProfessionChange() {
-        let selectedProfession = "";
-        for (const radio of professionRadios) {
-            if (radio.checked) {
-                selectedProfession = radio.value;
-                break;
-            }
-        }
 
-        if (selectedProfession === 'Teaching Staff') {
-            teachingFields.classList.add('show');
-            // Make subjects and experience dropdowns required fields
-            subjectHandledInput.setAttribute('required', 'true');
-            experienceInput.setAttribute('required', 'true');
-        } else {
-            teachingFields.classList.remove('show');
-            // Remove required requirements
-            subjectHandledInput.removeAttribute('required');
-            experienceInput.removeAttribute('required');
-            // Reset values
-            subjectHandledInput.value = "";
-            experienceInput.value = "";
-            // Clear validation errors on hidden fields
-            clearError(subjectHandledInput);
-            clearError(experienceInput);
-        }
-    }
-
-    professionRadios.forEach(radio => {
-        radio.addEventListener('change', handleProfessionChange);
-    });
 
     // ========================================================================
     // 3. PAYMENT SCREENSHOT FILE UPLOAD & PREVIEW LOGICS
@@ -369,40 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearError(state);
             }
 
-            // Profession check
-            let professionSelected = false;
-            let currentProfession = "";
-            for (const radio of professionRadios) {
-                if (radio.checked) {
-                    professionSelected = true;
-                    currentProfession = radio.value;
-                    break;
-                }
-            }
 
-            if (!professionSelected) {
-                showError(document.getElementById('prof-teaching'), "Please select your profession.");
-                isValid = false;
-            } else {
-                clearError(document.getElementById('prof-teaching'));
-                
-                // If teaching staff profession: check conditional dropdowns
-                if (currentProfession === "Teaching Staff") {
-                    if (subjectHandledInput.value === "") {
-                        showError(subjectHandledInput, "Please select your teaching subject.");
-                        isValid = false;
-                    } else {
-                        clearError(subjectHandledInput);
-                    }
-
-                    if (experienceInput.value === "") {
-                        showError(experienceInput, "Please select your teaching experience range.");
-                        isValid = false;
-                    } else {
-                        clearError(experienceInput);
-                    }
-                }
-            }
 
             // AI experience validation
             const aiExpSelected = document.getElementById('ai-experience');
@@ -495,9 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
             institution: formData.get('college-school-name'),
             district: formData.get('district'),
             state: formData.get('state'),
-            profession: formData.get('profession'),
-            subject: formData.get('subject-handled') || "N/A",
-            experience: formData.get('experience') || "N/A",
+            profession: "N/A",
+            subject: "N/A",
+            experience: "N/A",
             aiExperience: formData.get('ai-experience'),
             transactionId: formData.get('transaction-id') || "N/A",
             // Screenshot files passed as base64 string directly
@@ -548,5 +481,26 @@ document.addEventListener('DOMContentLoaded', () => {
         btnSubmit.classList.remove('btn-loading');
         btnSubmit.disabled = false;
         btnPrev.disabled = false;
+    }
+
+    // "Same as Mobile Number" sync handler
+    if (sameAsMobileCheckbox && mobileNumberInput && whatsappNumberInput) {
+        sameAsMobileCheckbox.addEventListener('change', () => {
+            if (sameAsMobileCheckbox.checked) {
+                whatsappNumberInput.value = mobileNumberInput.value;
+                whatsappNumberInput.setAttribute('readonly', 'true');
+                whatsappNumberInput.style.opacity = '0.7';
+                clearError(whatsappNumberInput);
+            } else {
+                whatsappNumberInput.removeAttribute('readonly');
+                whatsappNumberInput.style.opacity = '1';
+            }
+        });
+
+        mobileNumberInput.addEventListener('input', () => {
+            if (sameAsMobileCheckbox.checked) {
+                whatsappNumberInput.value = mobileNumberInput.value;
+            }
+        });
     }
 });

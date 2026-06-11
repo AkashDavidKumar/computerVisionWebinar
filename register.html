@@ -117,6 +117,10 @@
                                 <label for="whatsapp-number">WhatsApp Number <span>*</span></label>
                                 <input type="tel" id="whatsapp-number" name="whatsapp-number" class="input-control" placeholder="10-digit number" required pattern="[6-9][0-9]{9}">
                                 <span class="error-msg">Enter a valid WhatsApp number.</span>
+                                <label style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+                                    <input type="checkbox" id="same-as-mobile" style="width: auto; margin: 0; transform: scale(1.1); cursor: pointer;">
+                                    <span>Same as Mobile Number</span>
+                                </label>
                             </div>
                         </div>
 
@@ -172,71 +176,7 @@
                             </div>
                         </div>
 
-                        <!-- Profession Selection -->
-                        <div class="form-group">
-                            <label>Profession <span>*</span></label>
-                            <div class="radio-group-grid">
-                                <label class="radio-card" for="prof-teaching">
-                                    <input type="radio" id="prof-teaching" name="profession" value="Teaching Staff" required>
-                                    <div class="radio-checkmark"></div>
-                                    <span>Teaching Staff</span>
-                                </label>
-                                <label class="radio-card" for="prof-student">
-                                    <input type="radio" id="prof-student" name="profession" value="Student">
-                                    <div class="radio-checkmark"></div>
-                                    <span>Student</span>
-                                </label>
-                                <label class="radio-card" for="prof-coord">
-                                    <input type="radio" id="prof-coord" name="profession" value="Academic Coordinator">
-                                    <div class="radio-checkmark"></div>
-                                    <span>Academic Coordinator</span>
-                                </label>
-                                <label class="radio-card" for="prof-other">
-                                    <input type="radio" id="prof-other" name="profession" value="Other">
-                                    <div class="radio-checkmark"></div>
-                                    <span>Other</span>
-                                </label>
-                            </div>
-                            <span class="error-msg" style="margin-top:10px;">Please select your profession.</span>
-                        </div>
 
-                        <!-- Conditional Logic: Teaching Staff Specific Questions -->
-                        <div id="teaching-conditional-fields" class="conditional-fields">
-                            <div class="form-group half-width">
-                                <div>
-                                    <label for="subject-handled">Subject Handled <span>*</span></label>
-                                    <select id="subject-handled" name="subject-handled" class="input-control">
-                                        <option value="" disabled selected>Select Subject</option>
-                                        <option value="Computer Science">Computer Science</option>
-                                        <option value="Mathematics">Mathematics</option>
-                                        <option value="Physics">Physics</option>
-                                        <option value="Chemistry">Chemistry</option>
-                                        <option value="Biology">Biology</option>
-                                        <option value="English">English</option>
-                                        <option value="Tamil">Tamil</option>
-                                        <option value="Commerce">Commerce</option>
-                                        <option value="Economics">Economics</option>
-                                        <option value="History">History</option>
-                                        <option value="Geography">Geography</option>
-                                        <option value="Physical Education">Physical Education</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                    <span class="error-msg">Subject handled is required.</span>
-                                </div>
-                                <div>
-                                    <label for="experience">Experience <span>*</span></label>
-                                    <select id="experience" name="experience" class="input-control">
-                                        <option value="" disabled selected>Select Experience</option>
-                                        <option value="Less than 1 Year">Less than 1 Year</option>
-                                        <option value="1-3 Years">1-3 Years</option>
-                                        <option value="3-5 Years">3-5 Years</option>
-                                        <option value="5-10 Years">5-10 Years</option>
-                                        <option value="10+ Years">10+ Years</option>
-                                    </select>
-                                    <span class="error-msg">Teaching experience is required.</span>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- Additional Question: AI Experience -->
                         <div class="form-group">
